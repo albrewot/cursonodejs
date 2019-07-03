@@ -1,0 +1,278 @@
+Introducción a Node.js
+
+Express y Swig
+
+Jade
+
+MongoDB y Mongoose. Introducción
+
+Sesiones en Node.js
+
+Grunt y procesos automáticos
+
+Optimización de rendimiento
+
+Socket.io
+
+Creando Node.js REST API
+
+TDD para Node.js con Mocha
+
+Deploy de proyectos Node.js
+
+gaston13:08
+Todo bien
+Jorge13:09
+Hoy, al menos a mi, se te oye mejor. Ayer habia algo de lag, pero tal vez seria yo
+Usted13:09
+si ayer tenia un problema con el microfono
+Usted13:09
+que se me escuchaba la voz gruesa
+Nacor13:10
+si
+Miguel Angel Lopez13:10
+Si
+David Lucena13:10
+si
+Javier Barrio13:11
+si
+Jorge13:11
+s
+Miguel Angel Lopez13:11
+Si
+Jorge13:11
+si
+Nacor13:11
+si
+Jorge13:12
+a mi, 10 veces mejor
+gaston13:12
+se escuha mejor
+David Lucena13:12
+mejor
+Nacor13:12
+bastante mejor
+Miguel Angel Lopez13:12
+Mejor
+Nacor13:15
+ok
+Javier Barrio13:15
+ok
+Miguel Angel Lopez13:15
+ok
+David Lucena13:15
+ok
+Jorge13:20
+si
+Nacor13:21
+si
+Miguel Angel Lopez13:21
+si
+David Lucena13:21
+si
+Nacor13:27
+todo bien
+gaston13:31
+todo bien
+Arnau Giralt13:31
+buenas, disculpad el retraso, cosas del trabajo, todo bien
+Arnau Giralt13:42
+todo ok
+Miguel Angel Lopez13:43
+todo ok
+David Lucena13:43
+todo bien
+Arnau Giralt13:47
+disculpa, en la linia 3 tienes this,name en vez de this.name
+Jorge13:48
+tienes una comilla si
+Arnau Giralt13:50
+una pregunta, si en vez de utilizar una arrow function utilizases function() ... , el scope del this de dentro de la funcion cambia? o se mantiene en el scope de Person?
+Arnau Giralt13:57
+okay, sisi todo ok
+Arnau Giralt13:57
+gracias
+Arnau Giralt13:58
+todo bien
+Antonio Pérez13:58
+sin problemas
+Nacor14:03
+si
+Antonio Pérez14:03
+se comprende bastante bien
+Nacor14:09
+si se oye ruido
+Jose Manuel Dominguez14:09
+si, se esucha sonido de fondo
+Antonio Pérez14:09
+te oigo bien a pesar del sonido de fondo
+Jorge14:09
+un poco, pero no es molesto
+Nacor14:09
+Pero se te escucha bien
+Javier Barrio14:09
+se oye bien
+Jose Manuel Dominguez14:09
+no molesta
+Nacor14:21
+si
+Antonio Pérez14:23
+Sobre constructores: ¿Siempre que se hace una clase que extiende otra se tiene que llamar a super() desde su constructor?
+Antonio Pérez14:24
+ok. es porque he probado a comentar la llamada y me fallaba
+Antonio Pérez14:25
+incluso si no tiene constructor el padre
+Nacor14:25
+Se puede hacer un override del método de la clase padre?
+Nacor14:28
+gracias
+Antonio Pérez14:28
+¿y puede volver a referenciarse el método del padre aunuque esté redefinido en el hijo?
+gaston14:30
+Si que se pueden hacer overrides
+Nacor14:31
+si
+gaston14:32
+https://imgur.com/a/9h04AKy
+Nacor14:36
+Genial
+Nacor14:47
+Todo correcto
+Arnau Giralt14:47
+todo ok
+Miguel Angel Lopez14:47
+todo ok por ahora
+Antonio Pérez14:48
+ok
+Nacor14:48
+ok
+Arnau Giralt14:48
+ok
+Arnau Daza14:49
+ok
+Jorge15:00
+si
+Nacor15:00
+si
+David Lucena15:00
+si
+gaston15:02
+si
+Arnau Daza15:02
+si
+Miguel Angel Lopez15:02
+si
+Manuel15:02
+si
+Antonio Pérez15:02
+si
+David Lucena15:03
+no se ve la pantalla
+Jorge15:03
+no se ve la pantalla
+Manuel15:03
+no
+Nacor15:04
+la pantalla
+Arnau Giralt15:04
+si
+David Lucena15:04
+si
+Miguel Angel Lopez15:06
+si
+David Lucena15:18
+todo bien
+Arnau Giralt15:18
+si
+Javier Barrio15:18
+A mí no me funciona la instalación
+Arnau Giralt15:19
+cual, javier?
+Javier Barrio15:19
+La instalación de módulos npm
+Javier Barrio15:19
+Le doy al comando y se queda infinitamente sin empezar la descarga
+Javier Barrio15:19
+npm i express
+Javier Barrio15:20
+[..................] / rollbackFailedOptional: verb npm-session 6c7dedee942b987e
+Javier Barrio15:20
+Y así se queda
+Arnau Giralt15:20
+estas por vpn o algo por el estilo?
+Javier Barrio15:20
+No
+Javier Barrio15:20
+Estoy en el ordenador de la oficina
+Arnau Giralt15:21
+pues ni idea..
+Javier Barrio15:21
+Está el firewall de la empresa, pero el mismo no me impide bajar cosas de la web
+Arnau Giralt15:21
+prueba con https://stackoverflow.com/questions/46011546/npm-install-error-rollbackfailedoptional/46677097
+Jorge15:22
+No se oye nada, o soy yo ?
+Arnau Giralt15:22
+nop
+Miguel Angel Lopez15:22
+tambien me he quedado sin audio
+Arnau Giralt15:22
+F
+Miguel Angel Lopez15:22
+F
+gaston15:23
+No se oye
+Antonio Pérez15:23
+no, no oigo
+Javier Barrio15:23
+No se oye
+Antonio Pérez15:23
+ahora sí
+Arnau Giralt15:23
+ahora si
+Javier Barrio15:23
+Ahora sí
+Jorge15:23
+ahora
+Miguel Angel Lopez15:23
+ahora si
+Jorge15:24
+despues de los console.log del req y el res
+Javier Barrio15:24
+Sí
+Jorge15:25
+si
+Antonio Pérez15:25
+si
+Javier Barrio15:26
+Se ha ido la imagen
+Nacor15:26
+si
+Jorge15:26
+se te oye si
+Antonio Pérez15:26
+si
+Javier Barrio15:27
+Yo veo una pantalla que pone FN
+Nacor16:07
+Genial
+gaston16:07
+Bien
+Arnau Giralt16:07
+bien
+Antonio Pérez16:07
+el código que has escrito lo dejarás?
+Antonio Pérez16:09
+ok, perfecto
+Arnau Giralt16:09
+perfecto, hasta mañana
+Jorge16:09
+ciao! hasta mañana
+Antonio Pérez16:09
+nada más por hoy, hasta mañana
+Miguel Angel Lopez16:09
+Hasta mañana !
+Nacor16:10
+Hasta mañana
+Arnau Daza16:10
+hasta mañana
