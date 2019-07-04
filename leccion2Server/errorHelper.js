@@ -1,5 +1,5 @@
 const errorHandler = (err, req, res, next) => {
-console.log()
+    console.log(err)
 }
 
 module.exports = errorHandler;
