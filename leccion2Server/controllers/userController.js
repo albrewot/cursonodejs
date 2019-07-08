@@ -7,6 +7,7 @@ const userService = require("../services/userService");
 //Importar los middlewares para el controlador o seccion de usuarios
 
 //Rutas de acceso para el seccion de usuarios
+router.get('/', getUsers);
 router.get("/find", findUserByName);
 router.get("/:id", getUser);
 router.post("/register", registerUser);
@@ -14,8 +15,23 @@ router.put("/edit/:id", editUser);
 router.delete("/delete/:id", deleteUser);
 router.put("/add_friends/:id", addFriends);
 router.get("/get_friends/:id", getFriends);
+router.get("/usuarios/lista", showUsers);
+
+router.get("/hello/world", function(req,res,next) {
+  res.render("hello", {username: req.query.name});
+});
 
 module.exports = router;
+
+async function showUsers(req, res, next){
+  try {
+    const users = await userService.getUsers();
+    res.render("userlist", { users });
+  } catch (error) {
+    next(error);
+  }
+
+}
 
 async function getUser(req, res, next) {
   try {
@@ -29,7 +45,22 @@ async function getUser(req, res, next) {
   }
 }
 
+async function getUsers(req,res, next){
+  try{
+  const users = await userService.getUsers();
+
+  res.json({
+    message: "Se accedio al metodo de obtener todos los usuarios",
+    data: users
+  });
+
+  }catch(error){
+    next(error)
+  }
+}
+
 async function registerUser(req, res, next) {
+  console.log(req.body);
   try {
     const response = await userService.registerUser(req.body);
     res.json({
@@ -67,7 +98,10 @@ async function deleteUser(req, res, next) {
 
 async function addFriends(req, res, next) {
   try {
-    const response = await userService.addFriends(req.params.id, req.body);
+
+    const { params, body } = req;
+
+    const response = await userService.addFriends(params.id, body);
     res.json({
       message: "Se accedio al metodo de agregar amigos",
       data: response

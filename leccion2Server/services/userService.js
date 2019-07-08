@@ -19,13 +19,22 @@ class UserService {
     }
   }
 
+  async getUsers(){
+    try{
+      const users = await User.find();
+      return users;
+    }catch(error){
+      throw error;
+    }
+  }
+
   async findUserByName(name) {
     console.log(name);
     try {
       const user = await User.find({ name: new RegExp(name, "i") }).select(
         "name lastname username"
       );
-      if (!user) {
+      if (user.length === 0) {
         throw { info: `ningun usuario con nombre [${name}]` };
       }
       return user;
@@ -94,7 +103,7 @@ class UserService {
       user.toObject();
       Object.assign(user, { friends: [...user.friends, ...usersFound] });
       await user.save();
-      return { info: "Usuarios agregados a la lista de amgios" };
+      return { info: "Usuarios agregados a la lista de amigos" };
     } catch (error) {
       throw error;
     }

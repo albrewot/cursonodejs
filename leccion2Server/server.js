@@ -11,10 +11,13 @@ const app = express();
 const bodyParser = require("body-parser");
 const errorHelper = require("./middlewares/errorHelper");
 const routes = require("./routes");
-
+const edge = require('express-edge');
 //Middlewares globales
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(edge);
+app.set('views', `${__dirname}/views`);
+
 
 //Invocacion a las rutas del servidor
 routes(app);
@@ -61,5 +64,5 @@ app.use(errorHelper);
 // }
 
 app.listen(4001, () => {
-  console.log("Servidor esta escuchando en el puerto 4000");
+  console.log("Servidor esta escuchando en el puerto 4001");
 });

@@ -1,0 +1,12 @@
+@include('header')
+<div>
+    <h2>
+        Lista de usuarios 
+    </h2>
+    <ul>
+        @each(user in users)
+            <li><strong>Nombre</strong> {{ user.name }} {{ user.lastname}} </li>
+        @endeach
+    </ul>            
+</div>
+
