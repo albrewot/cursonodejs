@@ -13,19 +13,24 @@ async function login(req, res, next) {
   console.log("LOGIN");
   console.log(req.session);
   const { username, password } = req.body;
-  if (username && password) {
-    const user = await userService.findUserByUsername(username);
-    if (user) {
-      console.log("passwords", password, user.password);
-      const hash = await bcrypt.compare(password, user.password);
-      if (hash) {
-        console.log("Entro a guardar userId");
-        req.session.userId = user.id;
-        return res.redirect("/home");
-      } else {
-        next("Contraseña incorrecta");
+  try {
+    if (username && password) {
+      console.log(username, password);
+      const user = await userService.findUserByUsername(username);
+      if (user) {
+        console.log("passwords", password, user.password);
+        const hash = await bcrypt.compare(password, user.password);
+        if (hash) {
+          console.log("Entro a guardar userId");
+          req.session.userId = user.id;
+          return res.redirect("/home");
+        } else {
+          throw { error: "Contraseña incorrecta" };
+        }
       }
     }
+  } catch (err) {
+    next(err);
   }
   return res.redirect("/login");
 }
