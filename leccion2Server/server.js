@@ -9,15 +9,29 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
+const session = require("express-session");
 const errorHelper = require("./middlewares/errorHelper");
 const routes = require("./routes");
-const edge = require('express-edge');
+const edge = require("express-edge");
 //Middlewares globales
+
+app.use(
+  session({
+    name: "sid",
+    saveUninitialized: false,
+    resave: false,
+    secret: "SECRET_SESSION_KEY",
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 2,
+      sameSite: true,
+      secure: process.env.NODE_ENV === "production"
+    }
+  })
+);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(edge);
-app.set('views', `${__dirname}/views`);
-
+app.set("views", `${__dirname}/views`);
 
 //Invocacion a las rutas del servidor
 routes(app);

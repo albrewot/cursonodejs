@@ -10,6 +10,11 @@ const UserSchema = new Schema({
     unique: true,
     required: [true, "Falta la propiedad [username]"]
   },
+  password: {
+    type: String,
+    unique: true,
+    require: [true, "Falta la propiedad [password]"]
+  },
   name: {
     type: String,
     required: [true, "Falta la propiedad [name]"]

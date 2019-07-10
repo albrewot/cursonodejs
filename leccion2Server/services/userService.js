@@ -1,5 +1,5 @@
 const db = require("../config/db");
-
+const bcrypt = require("bcryptjs");
 const User = db.User;
 
 class UserService {
@@ -19,11 +19,11 @@ class UserService {
     }
   }
 
-  async getUsers(){
-    try{
+  async getUsers() {
+    try {
       const users = await User.find();
       return users;
-    }catch(error){
+    } catch (error) {
       throw error;
     }
   }
@@ -43,11 +43,39 @@ class UserService {
     }
   }
 
+  async findUserByUsername(username) {
+    console.log(username);
+    try {
+      const user = await User.findOne({
+        username
+      }).select("name lastname username password");
+      if (user.length === 0) {
+        throw { info: `ningun usuario con usuario [${username}]` };
+      }
+      return user;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async registerUser(params) {
     try {
       const user = new User(params);
+      // const salt = await bcrypt.genSalt(10);
+      const hash = await bcrypt.hash(params.password, 10);
+      if (hash) {
+        user.password = hash;
+        const newUser = await User.create(user);
+        if (newUser) {
+          return newUser;
+        } else {
+          throw "Error al crear usuario";
+        }
+      } else {
+        return "Error al encriptar contraseña";
+      }
       //el metodo save de un modelo u objeto de mongodb va a guardar el documento en su respectiva coleccion
-      return await user.save();
+      // return await user.save();
     } catch (error) {
       throw error;
     }
