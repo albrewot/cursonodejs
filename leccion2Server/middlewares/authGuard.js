@@ -1,4 +1,5 @@
 const userService = require("../services/userService");
+const jwt = require('jsonwebtoken');
 
 const isAuth = (req, res, next) => {
   console.log("isAuth middleware");
@@ -19,8 +20,27 @@ const userInfo = async (req, res, next) => {
   next();
 };
 
+const checkJWT = (req, res, next ) => {
+  const token = req.header('Authorization');
+  console.log(token);
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    console.log(decoded);
+    next();
+  }catch(error){
+    return res.status(401).json({
+      status: 401,
+      message: "Ocurrió un error al verificar token",
+      data: error.message
+  });
+}
+
+
+}
+
 module.exports = {
   isAuth,
   goHome,
-  userInfo
+  userInfo,
+  checkJWT
 };

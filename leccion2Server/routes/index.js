@@ -24,6 +24,7 @@ module.exports = app => {
   app.get("/login", goHome, (req, res, next) => {
     res.render("login");
   });
+
   app.get("/home", isAuth, (req, res, next) => {
     const { user } = res.locals;
     console.log(req.session.userId);

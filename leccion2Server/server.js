@@ -13,6 +13,7 @@ const session = require("express-session");
 const errorHelper = require("./middlewares/errorHelper");
 const routes = require("./routes");
 const edge = require("express-edge");
+require('dotenv').config();
 //Middlewares globales
 
 app.use(

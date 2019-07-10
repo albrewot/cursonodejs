@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const { checkJWT } = require("../middlewares/authGuard");
 
 //Importar los servicios para el controlador o seccion de usuarios
 const userService = require("../services/userService");
@@ -7,7 +8,7 @@ const userService = require("../services/userService");
 //Importar los middlewares para el controlador o seccion de usuarios
 
 //Rutas de acceso para el seccion de usuarios
-router.get('/', getUsers);
+router.get('/', checkJWT, getUsers);
 router.get("/find", findUserByName);
 router.get("/:id", getUser);
 router.post("/register", registerUser);
