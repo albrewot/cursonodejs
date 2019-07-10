@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const jwt = require('jsonwebtoken');
 const { checkJWT } = require("../middlewares/authGuard");
 
 //Importar los servicios para el controlador o seccion de usuarios
@@ -14,8 +15,9 @@ router.get("/:id", getUser);
 router.post("/register", registerUser);
 router.put("/edit/:id", editUser);
 router.delete("/delete/:id", deleteUser);
-router.put("/add_friends/:id", addFriends);
+router.put("/add_friends/", checkJWT, addFriends);
 router.get("/get_friends/:id", getFriends);
+router.get("/token/me", checkJWT, me);
 router.get("/usuarios/lista", showUsers);
 
 router.get("/hello/world", function(req,res,next) {
@@ -24,6 +26,12 @@ router.get("/hello/world", function(req,res,next) {
 
 module.exports = router;
 
+const getCurrentUser = (req) => {
+  const token = req.header('Authorization');
+  const { user} = jwt.verify(token, process.env.JWT_SECRET);
+  return user;
+}
+
 async function showUsers(req, res, next){
   try {
     const users = await userService.getUsers();
@@ -31,7 +39,11 @@ async function showUsers(req, res, next){
   } catch (error) {
     next(error);
   }
+}
 
+async function me(req, res, next){
+    const user = getCurrentUser(req);
+    res.json(user);
 }
 
 async function getUser(req, res, next) {
@@ -100,9 +112,12 @@ async function deleteUser(req, res, next) {
 async function addFriends(req, res, next) {
   try {
 
-    const { params, body } = req;
+    const { body } = req;
+    const user = getCurrentUser(req);
 
-    const response = await userService.addFriends(params.id, body);
+    console.log(user);
+
+    const response = await userService.addFriends(user._id, body);
     res.json({
       message: "Se accedio al metodo de agregar amigos",
       data: response
