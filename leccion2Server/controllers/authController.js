@@ -22,6 +22,8 @@ async function login(req, res, next) {
         console.log("Entro a guardar userId");
         req.session.userId = user.id;
         return res.redirect("/home");
+      } else {
+        next("Contraseña incorrecta");
       }
     }
   }

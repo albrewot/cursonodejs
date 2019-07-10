@@ -49,7 +49,7 @@ class UserService {
       const user = await User.findOne({
         username
       }).select("name lastname username password");
-      if (user.length === 0) {
+      if (user.length === 0 || !user) {
         throw { info: `ningun usuario con usuario [${username}]` };
       }
       return user;
