@@ -1,0 +1,12 @@
+@include('header')
+
+<h2>Socket.io</h2>
+
+{{--  <button id="test">Alerta</button>  --}}
+<input type="text" name="user" placeholder="Usuario" id="user">
+<input type="button" value="Entrar al Chat" name="start" id="start">
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/scripts/socket.js"></script>
+@include('footer')

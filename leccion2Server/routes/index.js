@@ -9,7 +9,7 @@ module.exports = app => {
   app.use(userInfo);
 
   app.get("/", (req, res, next) => {
-    res.redirect("home");
+    res.redirect("socket");
   });
 
   //locahost:4000/api/users/*
@@ -21,8 +21,13 @@ module.exports = app => {
   app.get("/register", goHome, (req, res, next) => {
     res.render("register");
   });
+
   app.get("/login", goHome, (req, res, next) => {
     res.render("login");
+  });
+
+  app.get("/socket", (req, res, next) => {
+    res.render("socket");
   });
 
   app.get("/home", isAuth, (req, res, next) => {
