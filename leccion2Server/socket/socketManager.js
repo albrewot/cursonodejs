@@ -1,7 +1,6 @@
 const users = [];
 
 module.exports = (socket, io) => {
-  socket.room = socket.id;
   socket.emit("CONNECTED", `Te has conectado en el socket: ${socket.id}`);
 
   socket.broadcast.emit(
@@ -27,17 +26,18 @@ module.exports = (socket, io) => {
   });
 
   socket.on("JOIN_ROOM", room => {
-    socket.leave(socket.room);
-    socket.join("room" + room);
-    socket.room = "ROOM-" + room;
+    console.log(socket);
+    console.log(room);
+    socket.join(room);
     socket.emit("JOINED_ROOM", room);
-    console.log(`ROOM-${room}`);
+    console.log(`Socket ${room}`);
   });
 
   socket.on("ROOM_MESSAGE", async info => {
     console.log(info);
     console.log(socket.rooms);
-    io.sockets.in("room" + info.room).emit(`ROOM_MESSAGE-${info.room}`, info);
+
+    io.sockets.to(info.room).emit(info.room, info);
   });
 
   //Cuando un client se desconecta del socket
