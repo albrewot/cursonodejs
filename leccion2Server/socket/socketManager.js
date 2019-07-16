@@ -28,7 +28,9 @@ module.exports = (socket, io) => {
   socket.on("JOIN_ROOM", room => {
     console.log(socket);
     console.log(room);
+
     socket.join(room);
+    socket.room = room;
     socket.emit("JOINED_ROOM", room);
     console.log(`Socket ${room}`);
   });
@@ -36,12 +38,12 @@ module.exports = (socket, io) => {
   socket.on("ROOM_MESSAGE", async info => {
     console.log(info);
     console.log(socket.rooms);
-
+    console.log("variable room", socket.room);
     io.sockets.to(info.room).emit(info.room, info);
   });
 
   //Cuando un client se desconecta del socket
-  socket.on("disconnect", function() {
+  socket.on("disconnect", function () {
     console.log(`Socket: ${socket.id} se ha desconectado`);
   });
 };

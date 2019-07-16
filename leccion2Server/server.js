@@ -19,7 +19,7 @@ const socketManager = require("./socket/socketManager");
 require("dotenv").config();
 
 //Socket.io
-//namespaces
+// namespaces
 // const externo = io.of("/externo");
 // externo.on("connection", socket => {
 //   console.log(`Socket ${socket.id} se ha conectado ha externo`);

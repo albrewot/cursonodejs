@@ -15,6 +15,7 @@ socket.on("USER_SET", data => {
     <h2>${user}</h2>
     <input type = "text" id = "message">
     <button type = "button" name = "button" onclick = "sendMessage()">Send</button>\
+    <h2>Lista de mensajes</h2>
     <div id = "message-container"></div>
     <br>
     <input type="button" value="Room 1" name="room" id="room1" onclick="joinRoom('room1')">
@@ -25,7 +26,7 @@ socket.on("USER_EXISTS", response => {
   alert(response);
 });
 
-socket.on("NEW_MESSAGE", function(data) {
+socket.on("NEW_MESSAGE", (data) => {
   if (user) {
     document.getElementById("message-container").innerHTML +=
       "<p><b>" + data.user + "</b>: " + data.message + "</p>";
